@@ -2,38 +2,50 @@ class CatClicker {
     constructor (name, pic){
         this.name = name;
         this.pic = pic; 
-        this.innerHTML = "<div>
-                    <p class="catName"></p>
-                    <img src="" alt="cat head" class="catImage">
-                    <p class="counter">0</p>
-                </div>";
     }
     
-    function nameMe () {
-        let catName = document.getElementsByClassName('catName').innerText;         
+    buildCat() {
+        const catDiv = document.createElement('DIV');
+        const divName = document.createElement('P').setAttribute("class","catName");
+        const divPic = document.createElement('IMG').setAttribute("class","catImage");
+        const divCounter = document.createElement('P').setAttribute("class","counter");
+        catDiv.append(divName, divPic, divCounter);
+    }
+    
+    nameMe() {
+        let catName = this.getElementsByClassName('catName').innerText;         
         catName = this.name;
     }
     
-    function picMe () {
+    picMe() {
         let catPic = document.getElementsByClassName('catImage');
-        catPic.setAttribute(src, this.pic);
+        catPic.setAttribute("src", this.pic);
+        catPic.setAttribute("alt", "cat head");
     }
     
-    function catClick() {
-        const counter = document.getElementsByClassName('counter');
+    catClick() {
+        const counter = this.getElementsByClassName('counter');
+        counter.innerText = 0;
         let counterNumber = 0;
-        this.pic.addEventListener('click', catClick);
+        const catImage = this.getElementsByClassName('catImage');
+        catImage.addEventListener('click', function () {
         ++counterNumber;
         counter.innerHTML= counterNumber;
-    };
+        });
+    }
 }
 
 
-let cat1 = new CatClicker('Briscuit', "japanese-bobtail.png");
+let cat1 = new CatClicker('Biscuit', "japanese-bobtail.png");
 let cat2 = new CatClicker('Ginger', "turkish-van.png");
 let catArray = [cat1, cat2];
+        
 const catNode = document.getElementById('catNode');
 
 for (cat of catArray){
+    cat.buildCat();
+    cat.nameMe();
+    cat.picMe();
+    cat.catClick();
     catNode.appendChild(cat);
 };

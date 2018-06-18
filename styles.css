@@ -90,7 +90,7 @@ nav {
 
 main {
     text-align: center;
-    margin-left: 150px;
+    margin: 0 auto;
 }
 
 #cats {
@@ -107,10 +107,23 @@ main {
     margin: 30px auto;
 }
 
+#imageList {
+    list-style: none;
+}
+
+img {
+    display: none;
+}
+
+.focus {
+    display: block;
+}
+
 .catImage {
     margin: 20px auto;
-    display: block;
     cursor: pointer;
+    width: 256px;
+    height: auto;
 }
 
 .counter {
@@ -123,4 +136,12 @@ main {
     text-align: center;
 }
 
+.biscuit {
+    background-image: url("biscuit.png");
+}
+
 /*---------FOOTER SECTION----------*/
+
+footer {
+    font-size: 12px;
+}
